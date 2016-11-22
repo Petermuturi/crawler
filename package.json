@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Petermuturi/crawler#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "simplecrawler": "^1.0.3"
   }
 }
