@@ -1,8 +1,34 @@
 var express = require('express');
 var app = express();
- 
+
+
  app.get('/', (req, res)=> {
- 	res.send('crawler')
+
+ 	var crawler = new Crawler("http://petermuturi.xyz/");
+
+	crawler.on("crawlstart", function() {
+	    console.log ("Crawl starting");
+	});
+
+	crawler.on("fetchstart", function(queueItem) {
+	    console.log ("fetchStart", queueItem);
+	});
+
+	crawler.on("fetchcomplete", function(queueItem) {
+	    console.log ("fetchcomplete", queueItem);
+	});
+
+	crawler.on("complete", function() {
+	    console.log ("Finished!");
+	    res.send('complete')
+	});
+	crawler.maxDepth = 2;
+	crawler.start();
+
+
+
+
+
  })
 
 var port = Number(process.env.PORT || 3001);
